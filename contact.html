@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adaptive Solutions - Contact Us</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Corrected from 'Style.css' to 'css/style.css' -->
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -41,33 +41,34 @@
                     <h2>Send Us a Message</h2>
                     <!--
                         !!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT FOR CONTACT FORM !!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        Since GitHub Pages is static and cannot run PHP or any server-side code,
-                        this contact form needs a third-party service to actually send emails.
+                        This form uses the 'mailto:' action. When a user submits this form,
+                        it will attempt to open their default email application (e.g., Outlook, Gmail composer).
+                        The email will be pre-filled with the recipient, subject, and body from the form fields.
 
-                        The easiest way is to use Formspree (https://formspree.io):
-                        1. Go to https://formspree.io and create a new form.
-                        2. Copy the unique URL they provide for your form.
-                        3. REPLACE 'https://formspree.io/f/YOUR_UNIQUE_ENDPOINT_HERE'
-                           below with YOUR ACTUAL FORMSPREE URL.
-                        4. After the first submission, Formspree will send an activation email to
-                           your connected email address. You must confirm it for future submissions to work.
+                        DISADVANTAGES:
+                        - User is taken away from your website.
+                        - You don't get a confirmation that the email was actually sent by the user.
+                        - Styling/behavior can vary greatly between email clients and browsers.
+                        - Your email address is directly exposed in the source code (potential spam risk).
 
-                        This is the ONLY part you need to 'add' or change manually if you want the form
-                        to send emails to you. Otherwise, it will not function beyond showing a generic
-                        browser error for not being able to reach the placeholder URL.
+                        To make this work:
+                        1. REPLACE "your_email@example.com" below with the actual email address
+                           where you want to receive messages.
+                        2. The `enctype="text/plain"` is crucial for older browsers and email clients
+                           to correctly parse the form data into the email body.
                     -->
-                    <form action="https://formspree.io/f/YOUR_UNIQUE_ENDPOINT_HERE" method="POST" class="contact-form">
+                    <form action="mailto:your_email@example.com?subject=Contact%20from%20Website" method="POST" enctype="text/plain" class="contact-form">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required>
 
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" name="_replyto" required> <!-- Use _replyto for Formspree -->
+                        <input type="email" id="email" name="user_email" required> <!-- Changed name from _replyto to user_email -->
 
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="_subject" required> <!-- Use _subject for Formspree -->
+                        <input type="text" id="subject" name="form_subject" required> <!-- Changed name from _subject to form_subject -->
 
                         <label for="message">Your Message</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea id="message" name="body_message" required></textarea> <!-- Changed name from message to body_message -->
 
                         <input type="submit" value="Send Message">
                     </form>
@@ -77,7 +78,7 @@
                     <h2>Or Find Us Here</h2>
                     <p><strong>Email:</strong> <a href="mailto:wdtr62@gmail.com">info@adaptivesolutions.com</a></p>
                     <p><strong>Phone:</strong> <a href="tel:+17806254582">+1 (870) 623-4582</a></p>
-                    <p><strong>Location:</strong> [Blytheville, Arkansas/USA]</p>
+                    <p><strong>Location:</strong> Blytheville, Arkansas, USA</p>
                     <!-- Optional: Embed a Google Map. Replace this div with a real map embed code if desired. -->
                     <div style="width: 100%; height: 300px; background-color: #eee; margin-top: 20px; display: flex; align-items: center; justify-content: center; color: #666; border-radius: 8px;">
                         Placeholder for Google Map Embed
