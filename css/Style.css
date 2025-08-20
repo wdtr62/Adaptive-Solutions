@@ -1,0 +1,465 @@
+/* css/style.css - DARK THEME WITH BLUE BACKGROUND BLEND */
+
+/* --- Base Colors (UPDATED FOR DARK THEME) --- */
+:root {
+    --primary-color: #007bff; /* Bright Blue - for highlights, buttons */
+    --secondary-color: #6c757d; /* Muted Grey - for secondary actions */
+    --accent-color: #28a745; /* Green - for success/contact button */
+
+    --dark-primary-bg: #1c2a38; /* A deep, rich blue-grey for main sections */
+    --dark-secondary-bg: #131c26; /* An even darker blue-grey for header/footer/alternate sections */
+    --dark-border-color: #3a4a5b; /* A subtle dark blue border for elements */
+
+    --light-text-color: #e0e6eb; /* Light grey-blue for general text on dark backgrounds */
+    --light-heading-color: #ffffff; /* Pure white for main headings on dark backgrounds */
+    --card-bg-color: #ffffff; /* White for cards to stand out */
+
+    --card-shadow: 0 6px 15px rgba(0,0,0,0.4); /* More pronounced shadow for dark theme */
+}
+
+/* --- Global Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--light-text-color); /* General text is light */
+    background-color: var(--dark-primary-bg); /* Overall page background is deep blue-grey */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--light-heading-color); /* Headings are white/light */
+    margin-bottom: 0.8em;
+}
+
+h1 { font-size: 2.8em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.8em; }
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--primary-color); /* Links are bright blue */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #4dafff; /* Lighter blue on hover */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--card-bg-color); /* Buttons have white text */
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+.button.secondary {
+    background-color: var(--secondary-color);
+    color: var(--light-heading-color); /* Secondary buttons have light text */
+}
+.button.secondary:hover {
+    background-color: #5a6268;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+    background-color: var(--dark-secondary-bg); /* Very dark header */
+    color: var(--light-text-color);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.6); /* More prominent shadow for dark theme */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--light-heading-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    color: var(--light-text-color);
+    font-weight: bold;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+    width: 100%;
+}
+
+.main-nav ul li a.active {
+    color: var(--primary-color); /* Active nav link is bright blue */
+}
+
+/* --- Hero Section (Same as before, dark overlay makes text pop) --- */
+.hero {
+    background: url('../img/hero-background.jpg') no-repeat center center/cover;
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 120px 20px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65); /* Slightly darker overlay for hero */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero h1 {
+    color: var(--light-heading-color);
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.4em;
+    margin-bottom: 30px;
+    color: var(--light-text-color);
+}
+
+/* --- Page Intro Section (for internal pages) --- */
+.page-intro {
+    background-color: var(--dark-secondary-bg); /* Dark blue background for page intros */
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.page-intro h1 {
+    color: var(--light-heading-color);
+}
+.page-intro p {
+    color: var(--light-text-color);
+}
+
+/* --- General Content Sections --- */
+section {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--dark-primary-bg); /* Default background is dark blue-grey */
+}
+
+/* Optional: if you want alternating slightly different shades of dark blue-grey */
+section:nth-of-type(odd) {
+    background-color: var(--dark-primary-bg);
+}
+section:nth-of-type(even) {
+    background-color: var(--dark-secondary-bg); /* Or a slightly lighter shade if preferred */
+}
+
+
+section h2 {
+    color: var(--light-heading-color); /* Section headings are light */
+    margin-bottom: 40px;
+    font-size: 2.5em;
+}
+
+/* --- Service and Portfolio Item Cards (White for Contrast) --- */
+.services-grid, .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-item, .portfolio-item {
+    background-color: var(--card-bg-color); /* These cards are white */
+    color: #333; /* Dark text for readability on white cards */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover, .portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Stronger shadow on hover */
+}
+
+.service-item img, .portfolio-item img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.service-item h3, .portfolio-item h3 {
+    color: var(--primary-color); /* Headings in cards are bright blue */
+    margin-bottom: 15px;
+}
+.service-item p, .portfolio-item p {
+    color: #555; /* Slightly lighter text within cards for subtle contrast */
+}
+
+/* --- Call to Action (CTA) --- */
+.cta-section {
+    background-color: var(--primary-color); /* Bright blue for strong CTA */
+    color: var(--light-text-color);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: var(--light-heading-color);
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+/* --- About Section Specifics --- */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: left;
+}
+
+.about-content .text-block {
+    padding: 20px;
+    background-color: var(--card-bg-color); /* About text blocks are white */
+    color: #333; /* Dark text on white block */
+    border-left: 5px solid var(--primary-color);
+    box-shadow: var(--card-shadow);
+}
+.about-content .text-block p {
+    color: #555;
+}
+
+.about-content h2, .about-content h3 {
+    color: var(--primary-color); /* Headings within white about blocks are bright blue */
+}
+
+
+/* --- Contact Section / Form Specifics --- */
+.contact-form-container {
+    max-width: 700px;
+    margin: 40px auto;
+    background-color: var(--card-bg-color); /* Contact form is white */
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    text-align: left;
+}
+.contact-form-container h2 {
+    color: var(--primary-color); /* Form heading is bright blue */
+}
+
+
+.contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333; /* Dark text for labels on white form */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--dark-border-color); /* Darker border for input fields */
+    border-radius: 5px;
+    font-size: 1em;
+    background-color: #f2f2f2; /* Light grey input background */
+    color: #333;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form input[type="submit"] {
+    width: auto;
+    padding: 12px 30px;
+    background-color: var(--accent-color);
+    color: var(--card-bg-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-form input[type="submit"]:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.contact-info {
+    margin-top: 40px;
+    text-align: center;
+    color: var(--light-text-color); /* Text for contact info outside form is light */
+}
+.contact-info a {
+    color: var(--primary-color); /* Links in contact info are bright blue */
+}
+
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--dark-secondary-bg); /* Same dark blue-grey as header */
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.6); /* Shadow for footer */
+}
+
+.main-footer p {
+    margin-bottom: 5px;
+}
+
+.main-footer a {
+    color: var(--primary-color);
+    margin: 0 10px;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .main-nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    section h2 {
+        font-size: 2em;
+    }
+
+    .services-grid, .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5em;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .button {
+        padding: 10px 20px;
+    }
+}

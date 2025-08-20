@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Solutions - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.png" alt="Adaptive Solutions Logo">
+                Adaptive Solutions
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Adaptive Solutions</h1>
+                <p>Where Creativity Meets Precision: Graphics, Engineering, and Decal Expertise for Your Vision.</p>
+                <a href="services.html" class="button">Explore Our Services</a>
+                <a href="portfolio.html" class="button secondary">View Our Work</a>
+            </div>
+        </section>
+
+        <section class="what-we-do">
+            <div class="container">
+                <h2>Our Expertise Across Disciplines</h2>
+                <p>Adaptive Solutions provides comprehensive services from initial concept to final execution. We seamlessly integrate artistic vision with technical accuracy to deliver outstanding results in every project.</p>
+
+                <div class="services-grid">
+                    <div class="service-item">
+                        <img src="img/graphics.jpg" alt="Graphics Design">
+                        <h3>Graphics & Branding</h3>
+                        <p>Captivating visual identities, logos, marketing materials, and digital assets that truly represent your brand.</p>
+                        <a href="services.html#graphics" class="button button-small">Learn More</a>
+                    </div>
+                    <div class="service-item">
+                        <img src="img/engineering.jpg" alt="Engineering Services">
+                        <h3>Engineering & Design</h3>
+                        <p>Precise CAD modeling, product design, technical drawings, and structural analysis for robust solutions.</p>
+                        <a href="services.html#engineering" class="button button-small">Learn More</a>
+                    </div>
+                    <div class="service-item">
+                        <img src="img/decals.jpg" alt="Decal Stickers">
+                        <h3>Decal Stickers & Signs</h3>
+                        <p>High-quality custom decals, vehicle wraps, storefront signage, and professional application services.</p>
+                        <a href="services.html#decals" class="button button-small">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Transform Your Ideas into Reality?</h2>
+                <p>Whether it's a new brand, a custom product, or eye-catching signage, Adaptive Solutions has you covered.</p>
+                <a href="contact.html" class="button">Get a Free Consultation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Adaptive Solutions. All rights reserved.</p>
+            <p>
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript to dynamically update the copyright year -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
