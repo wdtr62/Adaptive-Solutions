@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adaptive Solutions - Contact Us</title>
-    <!-- CSS link is set to "Style.css" as per your instruction -->
-    <link rel="stylesheet" href="Style.css"> 
+    <link rel="stylesheet" href="Style.css"> <!-- Kept as 'Style.css' as per your request -->
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Include jsPDF library from a CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
@@ -40,45 +42,30 @@
             <div class="container">
                 <div class="contact-form-container">
                     <h2>Send Us a Message</h2>
-                    <!--
-                        !!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT FOR CONTACT FORM !!!!!!!!!!!!!!!!!!!!!!!!!!!
-                        This form uses the 'mailto:' action. When a user submits this form,
-                        it will attempt to open their device's default email application (e.g., Outlook, Gmail on browser).
-                        The email will be pre-filled with the recipient, subject, and body from the form fields.
-
-                        KEY POINTS TO BE AWARE OF (as this method has limitations):
-                        1.  **User Interaction Required:** The user's email client will open, and they will need to
-                            manually click "Send" within their email application to dispatch the message.
-                        2.  **No On-Page Confirmation:** Your website cannot know if the email was successfully sent.
-                            Therefore, it cannot display a "Thank You" message directly on the webpage after submission.
-                        3.  **Variable Behavior:** How the email client processes the form fields (e.g., placing all
-                            data into the body versus filling subject/recipient/sender fields) can vary between browsers
-                            and email applications.
-                        4.  **Autofill Disabled:** Most modern browsers disable autofill for `mailto:` forms for security/privacy reasons.
-                        5.  **SPAM Risk:** Placing your email address directly in the `mailto:` link can potentially expose
-                            it to bots that scrape websites for email addresses, increasing spam risk.
-
-                        To make this work:
-                        -   REPLACE "your_email@example.com" below with the actual email address
-                            where you want to receive messages. (e.g., "wdtr62@gmail.com")
-                        -   The `enctype="text/plain"` is crucial for correctly parsing the form data into the email body
-                            for many email clients.
-                    -->
-                    <form action="mailto:your_email@example.com?subject=New%20Inquiry%20from%20Adaptive%20Solutions%20Website" method="POST" enctype="text/plain" class="contact-form">
+                    <form id="contactForm" action="mailto:wdtr62@gmail.com?subject=Contact%20from%20Adaptive%20Solutions%20Website" method="POST" enctype="text/plain" class="contact-form">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="Name" required>
+                        <input type="text" id="name" name="name" required>
 
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" name="Email" required>
+                        <input type="email" id="email" name="user_email" required>
 
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="Subject" required>
+                        <input type="text" id="subject" name="form_subject" required>
 
                         <label for="message">Your Message</label>
-                        <textarea id="message" name="Message" required></textarea>
+                        <textarea id="message" name="body_message" required></textarea>
 
-                        <input type="submit" value="Send Message">
+                        <!-- Buttons for different actions -->
+                        <div style="display: flex; justify-content: space-between; gap: 15px;">
+                            <button type="button" class="button secondary" onclick="generatePdfAndInstructions()">Generate PDF</button>
+                            <input type="submit" value="Send Message" class="button">
+                        </div>
                     </form>
+
+                    <div id="pdf-instructions" style="margin-top: 20px; padding: 15px; background-color: #f0f8ff; border-left: 4px solid #007bff; border-radius: 4px; text-align: left; display: none;">
+                        <p><strong>PDF Generated!</strong> Please check your downloads folder. If you wish to send us this form as a PDF, please attach the downloaded file to the email before sending it via the "Send Message" button.</p>
+                    </div>
+
                 </div>
 
                 <div class="contact-info">
@@ -107,6 +94,56 @@
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // jsPDF integration function
+        function generatePdfAndInstructions() {
+            const { jsPDF } = window.jspdf;
+            const form = document.getElementById('contactForm');
+            const instructionsDiv = document.getElementById('pdf-instructions');
+
+            // Collect form data for the PDF content
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Simple text content for PDF
+            const pdfContent = `
+                Adaptive Solutions Contact Form Submission
+
+                Name: ${name}
+                Email: ${email}
+                Subject: ${subject}
+
+                --- Message ---
+                ${message}
+            `;
+
+            if (!name || !email || !subject || !message) {
+                alert('Please fill out all fields before generating the PDF.');
+                return;
+            }
+
+            // Create new PDF document
+            const doc = new jsPDF();
+
+            // Set font and size
+            doc.setFontSize(12);
+            doc.setTextColor(51, 51, 51); // Dark grey text
+
+            // Add text to PDF with line wrapping
+            const splitText = doc.splitTextToSize(pdfContent, 180); // 180mm width
+            doc.text(splitText, 15, 20); // x=15, y=20
+
+            // Save the PDF
+            doc.save('Adaptive_Solutions_Contact_Form.pdf');
+
+            // Show instructions for manual attachment
+            instructionsDiv.style.display = 'block';
+
+            // Optional: Scroll to instructions for better visibility on smaller screens
+            instructionsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     </script>
 
 </body>
