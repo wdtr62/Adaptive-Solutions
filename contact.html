@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adaptive Solutions - Contact Us</title>
-    <link rel="stylesheet" href="Style.css">
+    <!-- CSS link is set to "Style.css" as per your instruction -->
+    <link rel="stylesheet" href="Style.css"> 
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -42,33 +43,39 @@
                     <!--
                         !!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT FOR CONTACT FORM !!!!!!!!!!!!!!!!!!!!!!!!!!!
                         This form uses the 'mailto:' action. When a user submits this form,
-                        it will attempt to open their default email application (e.g., Outlook, Gmail composer).
+                        it will attempt to open their device's default email application (e.g., Outlook, Gmail on browser).
                         The email will be pre-filled with the recipient, subject, and body from the form fields.
 
-                        DISADVANTAGES:
-                        - User is taken away from your website.
-                        - You don't get a confirmation that the email was actually sent by the user.
-                        - Styling/behavior can vary greatly between email clients and browsers.
-                        - Your email address is directly exposed in the source code (potential spam risk).
+                        KEY POINTS TO BE AWARE OF (as this method has limitations):
+                        1.  **User Interaction Required:** The user's email client will open, and they will need to
+                            manually click "Send" within their email application to dispatch the message.
+                        2.  **No On-Page Confirmation:** Your website cannot know if the email was successfully sent.
+                            Therefore, it cannot display a "Thank You" message directly on the webpage after submission.
+                        3.  **Variable Behavior:** How the email client processes the form fields (e.g., placing all
+                            data into the body versus filling subject/recipient/sender fields) can vary between browsers
+                            and email applications.
+                        4.  **Autofill Disabled:** Most modern browsers disable autofill for `mailto:` forms for security/privacy reasons.
+                        5.  **SPAM Risk:** Placing your email address directly in the `mailto:` link can potentially expose
+                            it to bots that scrape websites for email addresses, increasing spam risk.
 
                         To make this work:
-                        1. REPLACE "your_email@example.com" below with the actual email address
-                           where you want to receive messages.
-                        2. The `enctype="text/plain"` is crucial for older browsers and email clients
-                           to correctly parse the form data into the email body.
+                        -   REPLACE "your_email@example.com" below with the actual email address
+                            where you want to receive messages. (e.g., "wdtr62@gmail.com")
+                        -   The `enctype="text/plain"` is crucial for correctly parsing the form data into the email body
+                            for many email clients.
                     -->
-                    <form action="mailto:your_email@example.com?subject=Contact%20from%20Website" method="POST" enctype="text/plain" class="contact-form">
+                    <form action="mailto:your_email@example.com?subject=New%20Inquiry%20from%20Adaptive%20Solutions%20Website" method="POST" enctype="text/plain" class="contact-form">
                         <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="Name" required>
 
                         <label for="email">Your Email</label>
-                        <input type="email" id="email" name="user_email" required> <!-- Changed name from _replyto to user_email -->
+                        <input type="email" id="email" name="Email" required>
 
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="form_subject" required> <!-- Changed name from _subject to form_subject -->
+                        <input type="text" id="subject" name="Subject" required>
 
                         <label for="message">Your Message</label>
-                        <textarea id="message" name="body_message" required></textarea> <!-- Changed name from message to body_message -->
+                        <textarea id="message" name="Message" required></textarea>
 
                         <input type="submit" value="Send Message">
                     </form>
@@ -76,8 +83,8 @@
 
                 <div class="contact-info">
                     <h2>Or Find Us Here</h2>
-                    <p><strong>Email:</strong> <a href="mailto:wdtr62@gmail.com">info@adaptivesolutions.com</a></p>
-                    <p><strong>Phone:</strong> <a href="tel:+17806254582">+1 (870) 623-4582</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:wdtr62@gmail.com">wdtr62@gmail.com</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+18706234582">+1 (870) 623-4582</a></p>
                     <p><strong>Location:</strong> Blytheville, Arkansas, USA</p>
                     <!-- Optional: Embed a Google Map. Replace this div with a real map embed code if desired. -->
                     <div style="width: 100%; height: 300px; background-color: #eee; margin-top: 20px; display: flex; align-items: center; justify-content: center; color: #666; border-radius: 8px;">
